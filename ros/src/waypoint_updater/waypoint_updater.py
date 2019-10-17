@@ -8,6 +8,7 @@ import numpy as np
 from std_msgs.msg import Int32
 
 import math
+MAX_DECEL = 10
 
 '''
 This node will publish waypoints from the car's current position to some `x` distance ahead.
@@ -52,7 +53,7 @@ class WaypointUpdater(object):
     def loop(self):
         rate = rospy.Rate(25)
         while not rospy.is_shutdown():
-            if self.pose and self.base_waypoints:
+            if self.pose and self.base_waypoints and self.stopline_wp_idx:
                 # Get closest waypoint
                 closest_waypoint_idx = self.get_closest_waypoint_id()
                 self.publish_waypoints(closest_waypoint_idx)
@@ -85,7 +86,7 @@ class WaypointUpdater(object):
         #lane = Lane()
         #lane.header = self.base_waypoints.header
         #lane.waypoints = self.base_waypoints.waypoints[closest_idx:closest_idx+LOOKAHEAD_WPS]
-        #self.final_waypoitns_pub.publish(lane)
+        #self.final_waypoints_pub.publish(lane)
 
     def generate_lane(self):
         lane = Lane()
