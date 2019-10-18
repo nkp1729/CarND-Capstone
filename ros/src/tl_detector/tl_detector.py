@@ -67,7 +67,7 @@ class TLDetector(object):
     def traffic_cb(self, msg):
         self.lights = msg.lights
         if self.waypoint_tree and self.pose:
-            image_cb('dummy_message')
+            self.image_cb('dummy_message')
 
     def image_cb(self, msg):
         """Identifies red lights in the incoming camera image and publishes the index
