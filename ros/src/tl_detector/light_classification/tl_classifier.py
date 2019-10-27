@@ -122,6 +122,9 @@ class TLClassifier(object):
         
                 # Each class with be represented by a differently colored box
                 draw_boxes(image, box_coords, classes)
+        #if True:
+        #    classes = [1]
+        #    scores = [1]
 
             print("Classification: {0} with Score = {1}".format(label_map[classes[0]], scores[0]))
 
