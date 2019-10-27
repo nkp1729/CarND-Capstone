@@ -10,7 +10,7 @@ from geometry_msgs.msg import TwistStamped
 
 import math
 MAX_DECEL = 10
-LINE_OFFSET = 2
+LINE_OFFSET = 0
 
 '''
 This node will publish waypoints from the car's current position to some `x` distance ahead.
