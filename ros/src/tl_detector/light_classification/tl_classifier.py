@@ -50,8 +50,10 @@ def load_graph(graph_file):
             od_graph_def.ParseFromString(serialized_graph)
             tf.import_graph_def(od_graph_def, name='')
 
+    return graph
+
+label_map = {1:'green', 2:'red', 3:'yellow', 4:'unknown'}
 class TLClassifier(object):
-    label_map = {1:'green', 2:'red', 3:'yellow', 4:'unknown'}
 
     def __init__(self, is_simulator):
 
@@ -65,26 +67,20 @@ class TLClassifier(object):
         this_file_directory = os.path.dirname(os.path.abspath(__file__))
         model_path = os.path.join(this_file_directory, GRAPH_FILE)
 
-        #TODO load classifier
-        with self.detection_graph.as_default():
-            od_graph_def = tf.GraphDef()
-            with tf.gfile.GFile(PATH_TO_GRAPH, 'rb') as fid:
-                od_graph_def.ParseFromString(fid.read())
-                tf.import_graph_def(od_graph_def, name='')
+        self.detection_graph = load_graph(model_path)
+        # The input placeholder for the image.
+        # `get_tensor_by_name` returns the Tensor with the associated name in the Graph.
+        self.image_tensor = self.detection_graph.get_tensor_by_name('image_tensor:0')
 
-            # The input placeholder for the image.
-            # `get_tensor_by_name` returns the Tensor with the associated name in the Graph.
-            self.image_tensor = self.detection_graph.get_tensor_by_name('image_tensor:0')
+        # Each box represents a part of the image where a particular object was detected.
+        self.boxes = self.detection_graph.get_tensor_by_name('detection_boxes:0')
 
-            # Each box represents a part of the image where a particular object was detected.
-            self.boxes = self.detection_graph.get_tensor_by_name('detection_boxes:0')
+        # Each score represent how level of confidence for each of the objects.
+        self.scores = self.detection_graph.get_tensor_by_name('detection_scores:0')
 
-            # Each score represent how level of confidence for each of the objects.
-            self.scores = self.detection_graph.get_tensor_by_name('detection_scores:0')
-
-            # The classification of the object (integer id).
-            self.classes = self.detection_graph.get_tensor_by_name('detection_classes:0')
-            self.num_detections = self.detection_graph.get_tensor_by_name('num_detections:0')
+        # The classification of the object (integer id).
+        self.classes = self.detection_graph.get_tensor_by_name('detection_classes:0')
+        self.num_detections = self.detection_graph.get_tensor_by_name('num_detections:0')
 
     def get_classification(self, image):
         """Determines the color of the traffic light in the image
@@ -103,9 +99,9 @@ class TLClassifier(object):
 
         with tf.Session(graph=self.detection_graph) as sess:                
             # Actual detection.
-            (boxes, scores, classes) = sess.run([self.detection_boxes, 
-                                                 self.detection_scores, 
-                                                 self.detection_classes], 
+            (boxes, scores, classes) = sess.run([self.boxes, 
+                                                 self.scores, 
+                                                 self.classes], 
                                                  feed_dict={self.image_tensor: image_np})
         
             # Remove unnecessary dimensions
@@ -129,6 +125,7 @@ class TLClassifier(object):
 
             print("Classification: {0} with Score = {1}".format(label_map[classes[0]], scores[0]))
 
+            self.confidence_cutoff = 0.0
             if scores[0] > self.confidence_cutoff:
                 if label_map[classes[0]] == 'red':
                     return TrafficLight.RED
