@@ -128,7 +128,7 @@ class TLClassifier(object):
 
             print("Classification: {0} with Score = {1}".format(label_map[classes[0]], scores[0]))
 
-            self.confidence_cutoff = 0.0
+            #self.confidence_cutoff = 0.0
             if scores[0] > self.confidence_cutoff:
                 if label_map[classes[0]] == 'red':
                     return TrafficLight.RED
