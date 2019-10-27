@@ -132,6 +132,6 @@ class TLClassifier(object):
                 elif label_map[classes[0]] == 'yellow':
                     return TrafficLight.YELLOW
                 elif label_map[classes[0]] == 'green':
-                    return TrafficLight.YELLOW
+                    return TrafficLight.GREEN
 
             return TrafficLight.UNKNOWN
