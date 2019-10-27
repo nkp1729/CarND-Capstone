@@ -40,6 +40,7 @@ class TLDetector(object):
 
         config_string = rospy.get_param("/traffic_light_config")
         self.config = yaml.load(config_string)
+        self.is_sim = self.config['is_sim']
 
         self.upcoming_red_light_pub = rospy.Publisher('/traffic_waypoint', Int32, queue_size=1)
 
@@ -126,7 +127,7 @@ class TLDetector(object):
 
         return closest_idx
 
-    def get_light_state(self, light):
+    def get_light_state(self, light, testing=False):
         """Determines the current color of the traffic light
 
         Args:
@@ -137,16 +138,19 @@ class TLDetector(object):
 
         """
         # For testing just return the light state
-        return light.state
+        if testing and self.is_sim:
+            return light.state
+        else:
+            if(not self.has_image):
+                self.prev_light_loc = None
+                return False
 
-        #if(not self.has_image):
-        #    self.prev_light_loc = None
-        #    return False
+            cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
 
-        #cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
+            #Get classification
+            return self.light_classifier.get_classification(cv_image)
 
-        ##Get classification
-        #return self.light_classifier.get_classification(cv_image)
+
 
     def process_traffic_lights(self):
         """Finds closest visible traffic light, if one exists, and determines its
