@@ -5,10 +5,10 @@
 
 |     Name      | Image        | Location | LinkedIn/Email | Github                   |
 |---------------|--------------|----------|----------|--------------------------|
-| __Neilkunal Panchal__ | <img src="./imgs/nkp.nkp" alt="Neilkunal Panchal" width="150" height="150">| UK | [linkedin.com/in/neilkunal-panchal-bb0970b/](https://www.linkedin.com/in/neilkunal-panchal-bb0970b/) |[github.com/nkp1729](https://github.com/nkp1729)  |
-| __Arun Jose__ | <img src="./imgs/arun.png" alt="Arun Jose" width="150" height="150"> | INDIA | [arun.jose@gmail.com](arun.jose@gmail.com) |[github.com/aijose](https://github.com/aijose)  |
-| __Jialiang Li__ |  <img src="./imgs/jialiang.jpg" alt="Jialiang Li" width="150" height="150">  | China | [srljl@163.com](srljl@163.com)|[github.com/Jeremy26](https://github.com/Jeremy26)|
-| __Boming Luo__ | <img src="./imgs/boming.jpg" alt="Luo Boming" width="150" height="150">| China | [luo.boming@fixstars.com](luo.boming@fixstars.com)|[github.com/KevinLeeLiang/](https://github.com/KevinLeeLiang)|
+| __Neilkunal Panchal__ | <img src="./imgs/nkp.png" alt="Neilkunal Panchal" width="150" height="150">| UK | [linkedin.com/in/neilkunal-panchal-bb0970b/](https://www.linkedin.com/in/neilkunal-panchal-bb0970b/) |[github.com/nkp1729](https://github.com/nkp1729)  |
+| __Arun Jose__ | <img src="./imgs/arun.jpg" alt="Arun Jose" width="150" height="150"> | INDIA | [arun_ij@yahoo.com](arun_ij@yahoo.com) |[github.com/aijose](https://github.com/aijose)  |
+| __Jialiang Li__ |  <img src="./imgs/jialiang.JPG" alt="Jialiang Li" width="150" height="150">  | China | [srljl@163.com](srljl@163.com)|[github.com/Jeremy26](https://github.com/Jeremy26)|
+| __Boming Luo__ | <img src="./imgs/Boming.jpg" alt="Luo Boming" width="150" height="150">| China | [luo.boming@fixstars.com](luo.boming@fixstars.com)|[github.com/KevinLeeLiang/](https://github.com/KevinLeeLiang)|
 
 
 ### Architecture
