@@ -8,7 +8,7 @@
 | __Neilkunal Panchal__ | <img src="./imgs/nkp.png" alt="Neilkunal Panchal" width="150" height="150">| UK | [linkedin.com/in/neilkunal-panchal-bb0970b/](https://www.linkedin.com/in/neilkunal-panchal-bb0970b/) |[github.com/nkp1729](https://github.com/nkp1729)  |
 | __Arun Jose__ | <img src="./imgs/arun.jpg" alt="Arun Jose" width="150" height="150"> | United States | [arun_ij@yahoo.com](arun_ij@yahoo.com) |[github.com/aijose](https://github.com/aijose)  |
 | __Jialiang Li__ |  <img src="./imgs/jialiang.JPG" alt="Jialiang Li" width="150" height="150">  | China | [srljl@163.com](srljl@163.com)|[github.com/KevinLeeLiang](https://github.com/KevinLeeLiang)|
-| __Boming Luo__ | <img src="./imgs/Boming.jpg" alt="Luo Boming" width="150" height="150">| Japan | [luo.boming@fixstars.com](luo.boming@fixstars.com)|[github.com/float168](https://github.com/float168)|
+| __Boming Luo__ | <img src="./imgs/Boming.jpg" alt="Luo Boming" width="150" height="150">| Japan | [luo.boming@fixstars.com](luo.boming@fixstars.com)|[github.com/float168/](https://github.com/float168)|
 
 
 ### Architecture
@@ -96,3 +96,22 @@ cd CarND-Capstone/ros
 roslaunch launch/site.launch
 ```
 5. Confirm that traffic light detection works on real life images
+
+### Simulator operation
+<img src="./imgs/simulator1.gif" alt="Vehicle Start" width="1080" height="608">
+<img src="./imgs/simulator11.gif" alt="Vehicle Start" width="1080" height="608">
+
+The car will start to accelerate gradually from static state
+
+
+<img src="./imgs/simulator2.gif" alt="Deceleration stop" width="1080" height="608">
+ 
+When the tl_detector detects a red light, the vehicle will plan to stop before the stop line
+ 
+
+<img src="./imgs/simulator3.gif" alt="Vehicle Restart" width="1080" height="608">
+
+When the detector does not detect a red light, the vehicle will re accelerate to start
+
+
+ 
